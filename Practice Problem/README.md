@@ -11,6 +11,12 @@
 | E    | 505000000  |
 | **Total** | **1505004616**  |
 
+## Execution
+To run the program:
+```
+./test.sh
+```
+
 ## Implementation
 A greedy algorithm was initially implemented. The input vector containing the various pizza slices were already sorted in ascending order Thus, the algorithm started from the end of the input vector and worked its way backwards, summing the slices along the way. If an addition of an element exceeded the maximum number of slices allowed, the element would be skipped and the algorithm would move on and attempt to add the next element.
 
