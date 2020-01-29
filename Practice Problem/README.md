@@ -24,17 +24,15 @@ Using test A as an example,
 
 ```
 Max Slices: 17
-Index: 3
 Elements: 2 5 6 8
-Sum: 0
 ```
 
 The algorithm begins at the last element, 8, which is added to the sum.
 
 ```
 Max Slices: 17
-Index: 3
 Elements: 2 5 6 8
+Index: 3
 Sum: 8
 ```
 
@@ -42,8 +40,8 @@ Next, the iterator moves to the second last element, 6, which is also added to t
 
 ```
 Max Slices: 17
-Index: 2
 Elements: 2 5 6 8
+Index: 2
 Sum: 14
 ```
 
@@ -51,8 +49,8 @@ Upon the addition of 5 at the next iteration, the algorithm rejects it as the to
 
 ```
 Max Slices: 17
-Index: 1
 Elements: 2 5 6 8
+Index: 1
 Sum: 19 X
 ```
 
@@ -60,8 +58,8 @@ Finally, 2 is added which gives a maximum total of 16 slices.
 
 ```
 Max Slices: 17
-Index: 0
 Elements: 2 5 6 8
+Index: 0
 Sum: 16
 ```
 
