@@ -1,6 +1,6 @@
 # More Pizza
 
-![alt text](https://raw.githubusercontent.com/cwlroda/Google-Hash-Code-2020/master/Practice%20Problem/images/More%20Pizza.jpg "More Pizza")
+![alt text](https://raw.githubusercontent.com/cwlroda/Google-Hash-Code-2020/master/images/More%20Pizza.jpg "More Pizza")
 
 | Test | Score      |
 | ---- | ---------- |
