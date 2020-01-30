@@ -4,14 +4,15 @@
 #include <vector>
 using namespace std;
 
-vector<int> calculate(vector<int> slices, int& score, int max_slices);
+vector<int> calculate(vector<int> slices, long& total_score, long max_slices);
 
 int main(int argc, char** argv){
     ifstream infile;
     infile.open(argv[1]);
 
     vector<int> slices;
-    int max_slices, types;
+    long max_slices;
+    int types;
 
     infile >> max_slices >> types;
 
@@ -23,9 +24,9 @@ int main(int argc, char** argv){
 
     infile.close();
 
-    int score=0;
+    long total_score=0;
 
-    vector<int> result = calculate(slices, score, max_slices);
+    vector<int> result = calculate(slices, total_score, max_slices);
 
     ofstream outfile;
     outfile.open(argv[2]);
@@ -39,48 +40,68 @@ int main(int argc, char** argv){
     outfile.close();
 
     cout << "Max score is: " << max_slices << endl;
-    cout << "Your score is: " << score << endl;
+    cout << "Your score is: " << total_score << endl;
 
     return 0;
 }
 
-vector<int> calculate(vector<int> slices, int& score, int max_slices){
-    vector<int> curr;
+vector<int> calculate(vector<int> slices, long& total_score, long max_slices){
+    vector<int> sol_index, sol_val, curr_index, curr_val;
+    int score=0;
+    int start = slices.size();
 
-    for(int k=slices.size()-1; k>=0; k--){
-        vector<int> slices_tmp = slices;
-        slices_tmp.erase(slices_tmp.begin()+k);
+    while((curr_index.size() > 0 && curr_index[0] != 0) || curr_index.size() == 0){
+        start -= 1;
 
-        for(int i=1; i<=slices_tmp.size(); i++){
-            vector<int> tmp;
-            int tmpscore=0;
+        for(int i=start; i>=0; i--){
+            int tmp = score + slices[i];
 
-            for(int j=slices_tmp.size()-i; j>=0; j--){
-                tmpscore += slices_tmp[j];
-
-                if(tmpscore == max_slices){
-                    tmp.insert(tmp.begin(), j);
-                    curr = tmp;
-                    score = tmpscore;
-                    return curr;
-                }
-
-                else if(tmpscore > max_slices){
-                    tmpscore -= slices_tmp[j];
-                }
-
-                else if(tmpscore < max_slices){
-                    tmp.insert(tmp.begin(), j);
-                }
+            if(tmp == max_slices){
+                score = tmp;
+                curr_index.push_back(i);
+                curr_val.push_back(slices[i]);
+                break;
             }
 
-            if(tmpscore > score){
-                score = tmpscore;
-                curr = tmp;
+            else if(tmp > max_slices){
+                continue;
             }
+
+            else if(tmp < max_slices){
+                score = tmp;
+                curr_index.push_back(i);
+                curr_val.push_back(slices[i]);
+            }
+        }
+
+        if(total_score < score){
+            total_score = score;
+
+            sol_index = curr_index;
+            sol_val = curr_val;
+        }
+
+        if(total_score == max_slices){
+            break;
+        }
+
+        if(curr_val.size() != 0){
+            int last = curr_val[curr_val.size()-1];
+            curr_val.pop_back();
+            score = score - last;
+        }
+
+        if(curr_index.size() != 0){
+            int last = curr_index[curr_index.size()-1];
+            curr_index.pop_back();
+            start = last;
+        }
+
+        if(curr_index.size() == 0 && start == 0){
+            break;
         }
     }
 
-    return curr;
+    return sol_index;
 }
 

@@ -12,6 +12,7 @@ for i in test/in/*.in; do
     BASENAME=$(basename $i .in);
     touch test/out/$BASENAME.out
     ./bin/pizza ${i} test/out/$BASENAME.out
+    ./bin/adder test/out/$BASENAME.out ${i}
     echo "Success!"
 done
 
