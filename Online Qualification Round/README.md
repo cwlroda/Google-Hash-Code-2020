@@ -50,4 +50,4 @@ Once certain books from a library are scanned, the remaining libraries are refre
 1. Devising a more complex weighting algorithm to accurately reflect the data in each library
 2. Introducing pipelining to increase efficiency when signing libraries up
 3. Factoring in the exact number of books to be output if not all books in a library can be scanned within the time given
-4. Improve time and space complexity by finding more efficient ways to iterate through the books and libraries when sorting
+4. Improving time and space complexity by finding more efficient ways to iterate through the books and libraries when sorting
