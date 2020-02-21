@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <map>
 #include <algorithm>
 
 multimap<int, int> MasterList;
@@ -10,6 +9,7 @@ vector<Lib> AllLibs;
 
 bool sortLibs(Lib l1, Lib l2);
 bool sortBooks(const pair<int, int>& x, const pair<int, int>& y);
+void refreshLib();
 
 int main(int argc, char* argv[]){
     if(argc < 3){
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]){
         AllLibs.push_back(l);
     }
 
-    sort(AllLibs.begin(), AllLibs.end(), sortLibs);
+    refreshLib();
 
     infile.close();
 
@@ -70,7 +70,49 @@ int main(int argc, char* argv[]){
 
     outfile << AllLibs.size() << endl;
 
-    for(int i=0; i<AllLibs.size(); i++){
+    bool signingUp = false;
+    int daysRemaining = 0;
+    int libCounter = 0;
+
+    // new algorithm
+    for(; totalDays > 0; totalDays--){
+        if(AllLibs.empty()){
+            break;
+        }
+
+        if(!signingUp){
+            signingUp = true;
+            Lib choice = AllLibs[0];
+            libCounter++;
+            daysRemaining = choice.getDays();
+
+            int booksInLib = choice.Books.size();
+            outfile << choice.getID() << " " << booksInLib << endl;
+
+            for(int i=0; i<booksInLib; i++){
+                MasterList.erase(choice.Books[i].first);
+                outfile << choice.Books[i].first << " ";
+            }
+
+            outfile << endl;
+
+            AllLibs.erase(AllLibs.begin());
+        }
+
+        else{
+            if(daysRemaining <= 1){
+                signingUp = false;
+                refreshLib();
+            }
+
+            else{
+                daysRemaining--;
+            }
+        }
+    }
+
+    // old simple algorithm
+    /* for(int i=0; i<AllLibs.size(); i++){
         int booksInLib = AllLibs[i].Books.size();
         outfile << AllLibs[i].getID() << " " << booksInLib << endl;
 
@@ -79,11 +121,11 @@ int main(int argc, char* argv[]){
         }
 
         outfile << endl;
-    }
+    } */
 
     outfile.close();
 
-    cout << "Libraries: " << AllLibs.size() << endl;
+    cout << "Libraries: " << libCounter << endl;
 
     return 0;
 }
@@ -94,4 +136,12 @@ bool sortLibs(Lib l1, Lib l2){
 
 bool sortBooks(const pair<int, int>& x, const pair<int, int>& y){
     return (x.second > y.second);
+}
+
+void refreshLib(){
+    for(int i=0; i<AllLibs.size(); i++){
+        AllLibs[i].refresh();
+    }
+
+    sort(AllLibs.begin(), AllLibs.end(), sortLibs);
 }
