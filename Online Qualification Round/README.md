@@ -32,7 +32,7 @@ To run program on an individual file:
 ## Implementation
 Initially, the books in each library are sorted in descending order based on their scores. Then, the libraries are sorted in descending "weight" using a simple algorithm. The weight of a library is given by:
 <p align="left">
-<img src="" width="100" height="80" title="Algorithm">
+<img src="https://raw.githubusercontent.com/cwlroda/Google-Hash-Code-2020/master/images/formula.png" width="100" height="80" title="Algorithm">
 </p>
 where i is the total number of books in the library, B is the score of each book, S is the number of books that can be scanned each day, and D is the number of days it takes to sign the library up for scanning.
 
