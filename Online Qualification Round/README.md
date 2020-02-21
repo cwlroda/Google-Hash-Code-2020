@@ -36,6 +36,7 @@ Initially, the books in each library are sorted in descending order based on the
 </p>
 where i is the total number of books in the library, B is the score of each book, S is the number of books that can be scanned each day, and D is the number of days it takes to sign the library up for scanning.
 <br>
+
 Libraries are signed up as long as there are no other libraries signing up concurrently. Once the library is signed up, its books are scanned and it is removed from the database. The maximum number of books that can be scanned is given by
 <p align="left">
 <img src="https://raw.githubusercontent.com/cwlroda/Google-Hash-Code-2020/master/images/Screenshot%202020-02-21%20at%205.18.57%20PM.png" width="80" height="50" title="Algorithm">
