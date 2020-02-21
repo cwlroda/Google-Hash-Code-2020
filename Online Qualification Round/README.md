@@ -6,11 +6,11 @@
 | ---- | ---------- |
 | A    | 21         |
 | B    | 5,822,900  |
-| C    | 4,940,693  |
-| D    | 4,812,990  |
-| E    | 4,021,186  |
-| F    | 4,915,464  |
-| **Total** | **24,513,254** |
+| C    | 4,966,742  |
+| D    | 4,815,395  |
+| E    | 4,164,635  |
+| F    | 4,948,349  |
+| **Total** | **24,718,042** |
 
 ## Build
 To build the program:
@@ -32,7 +32,7 @@ To run program on an individual file:
 ## Implementation
 Initially, the books in each library are sorted in descending order based on their scores. Then, the libraries are sorted in descending "weight" using a simple algorithm. The weight of a library is given by:
 <p align="left">
-<img src="" width="100" height="80" title="Algorithm">
+<img src="https://raw.githubusercontent.com/cwlroda/Google-Hash-Code-2020/master/images/formula.png" width="120" height="80" title="Algorithm">
 </p>
 where i is the total number of books in the library, B is the score of each book, S is the number of books that can be scanned each day, and D is the number of days it takes to sign the library up for scanning.
 
