@@ -41,9 +41,9 @@ Libraries are signed up as long as there are no other libraries signing up concu
 <img src="https://raw.githubusercontent.com/cwlroda/Google-Hash-Code-2020/master/images/Screenshot%202020-02-21%20at%205.18.57%20PM.png" width="80" height="50" title="Algorithm">
 </p>
 where R is the number of days to the deadline.
-<br>
+<br><br>
 If the total number of books in the library is less than this maximum, all the books can be scanned. If the total number exceeds the maximum, the first n books (where n corresponds to the maximum) are sent to be scanned.
-<br>
+<br><br>
 Once certain books from a library are scanned, the remaining libraries are refreshed to remove these books if they contain them. This ensures that all libraries only contain unscanned books at each iteration. The weights of the remaining libraries are also updated to reflect these changes and the database is re-sorted.
 
 ## Future Improvements
